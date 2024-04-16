@@ -69,3 +69,4 @@ jobs:
           git config --global user.name "${{ secrets. GIT_USERNAME }} "
           git add ./manifests/deployment.yaml
           git commit -m "Update container image in deployment.yaml"
+          git push
