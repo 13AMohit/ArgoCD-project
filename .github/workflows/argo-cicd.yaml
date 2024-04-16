@@ -54,3 +54,8 @@ jobs:
           tags: mohitv1/argocd-project:${{ steps.vars.outputs.branch }}_${{ steps.vars.outputs.sha_short }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
+      
+      - name: Update image in deployment.yaml
+        run: |
+          IMAGE_NAME="mohitv1/argocd-project:${{ steps.vars.outputs.branch }}_${{ steps.vars.outputs.sha_short }}"
+          sed -i "s|image:.*|image: $IMAGE_NAME|g" deployment.yaml
