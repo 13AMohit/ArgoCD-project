@@ -33,7 +33,7 @@ jobs:
           registry: docker.io
           pushImage: true
           username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }
+          password: ${{ secrets.DOCKER_PASSWORD }}
           
           
       - name: Update image in deployment.yaml
