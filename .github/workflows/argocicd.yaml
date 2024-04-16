@@ -35,6 +35,14 @@ jobs:
         id: buildx
         uses: docker/setup-buildx-action@v2
 
+      - name: Cache Docker layers
+        uses: actions/cache@v3
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-
+
       - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v3
@@ -44,9 +52,13 @@ jobs:
           builder: ${{ steps.buildx.outputs.name }}
           push: true
           tags: mohitv1/argocd-project:${{ steps.vars.outputs.branch }}_${{ steps.vars.outputs.sha_short }}
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache
+
           
       - name: Update image in deployment.yaml
         run: |
+          git pull
           IMAGE_NAME="mohitv1/argocd-project:${{ steps.vars.outputs.branch }}_${{ steps.vars.outputs.sha_short }}"
           sed -i "s|image:.*|image: $IMAGE_NAME|g" ./manifests/deployment.yaml
 
@@ -54,7 +66,6 @@ jobs:
         run: |
           git config --global user.email "${{ secrets.GIT_EMAIL }}"
           git config --global user.name "${{ secrets.GIT_USERNAME }}"
-          git pull
           git add ./manifests/deployment.yaml
           git commit -m "Update container image in deployment.yaml"
           git push
