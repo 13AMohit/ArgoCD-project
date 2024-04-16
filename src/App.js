@@ -23,7 +23,7 @@ function App() {
   };
 
   const unitOptions = [
-    { value: 'metric', label: 'Celsius (°C)' },
+    { value: 'metric', label: 'Mohit (°C)' },
     { value: 'imperial', label: 'Fahrenheit (°F)' },
   ];
 
