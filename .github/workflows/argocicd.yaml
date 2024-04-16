@@ -29,7 +29,8 @@ jobs:
         id: docker_build
         uses: mr-smithers-excellent/docker-build-push@v6
         with:
-          image: mohitv1/argocd-project:${{ steps.vars.outputs.branch }}_${{ steps.vars.outputs.sha_short }}
+          image: mohitv1/argocd-project
+          tags: ${{ steps.vars.outputs.branch }}_${{ steps.vars.outputs.sha_short }}
           registry: docker.io
           pushImage: true
           username: ${{ secrets.DOCKER_USERNAME }}
