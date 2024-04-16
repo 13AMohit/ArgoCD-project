@@ -31,30 +31,15 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Set up Docker Buildx
-        id: buildx
-        uses: docker/setup-buildx-action@v2
-
-      - name: Cache Docker layers
-        uses: actions/cache@v3
-        with:
-          path: /tmp/.buildx-cache
-          key: ${{ runner.os }}-buildx-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-buildx-
-
       - name: Build and push
         id: docker_build
-        uses: docker/build-push-action@v3
+        uses: mr-smithers-excellent/docker-build-push@v6
         with:
-          context: ./
-          file: ./Dockerfile
-          builder: ${{ steps.buildx.outputs.name }}
+          image: mohitv1/argocd-project:${{ steps.vars.outputs.branch }}_${{ steps.vars.outputs.sha_short }}
+          registry: docker.io
           push: true
           tags: mohitv1/argocd-project:${{ steps.vars.outputs.branch }}_${{ steps.vars.outputs.sha_short }}
-          cache-from: type=local,src=/tmp/.buildx-cache
-          cache-to: type=local,dest=/tmp/.buildx-cache
-
+          
           
       - name: Update image in deployment.yaml
         run: |
