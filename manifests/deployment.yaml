@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: argo-deploy
+  labels:
+    app: webapp
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: webapp
+  template:
+    metadata:
+      labels:
+        app: webapp
+    spec:
+      containers:
+      - name: webapp-image
+        image: mohitv1/argocd-project:master_4e356e8
+        ports:
+        - containerPort: 3000
