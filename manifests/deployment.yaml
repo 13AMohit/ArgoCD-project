@@ -8,11 +8,11 @@ spec:
   replicas: 4
   selector:
     matchLabels:
-    app: webapp
+     app: webapp
   template:
     metadata:
       labels:
-    app: webapp
+       app: webapp
     spec:
       containers:
       - name: webapp-image
