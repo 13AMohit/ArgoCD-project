@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: webapp-image
-        image: mohitv1/argocd-project:master_f72937c
+        image: mohitv1/argocd-project:master_b9b9c8b
         ports:
         - containerPort: 3000
