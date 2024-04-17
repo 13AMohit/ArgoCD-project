@@ -34,7 +34,7 @@ spec:
   template:
     metadata:
       labels:
-        app: webapp-rollouts
+        app: argo-rollouts
     spec:
       containers:
       - name: rollouts-webapp
