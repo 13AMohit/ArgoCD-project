@@ -30,11 +30,11 @@ spec:
   revisionHistoryLimit: 2
   selector:
     matchLabels:
-      app: argo-rollouts
+      app: webapp
   template:
     metadata:
       labels:
-        app: argo-rollouts
+        app: webapp
     spec:
       containers:
       - name: rollouts-webapp
