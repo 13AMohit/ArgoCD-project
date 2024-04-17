@@ -23,7 +23,7 @@ function App() {
   };
 
   const unitOptions = [
-    { value: 'metric', label: 'celsius (°C)' },
+    { value: 'metric', label: 'ARGOCD (°C)' },
     { value: 'imperial', label: 'Fahrenheit (°F)' },
   ];
 
