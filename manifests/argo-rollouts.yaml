@@ -1,0 +1,55 @@
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: argo-deploy
+#   labels:
+#     app: webapp
+# spec:
+#   replicas: 4
+#   selector:
+#     matchLabels:
+#       app: webapp
+#   template:
+#     metadata:
+#       labels:
+#         app: webapp
+#     spec:
+#       containers:
+#       - name: webapp-image
+#         image: mohitv1/argocd-project:master_c82efa1
+#         ports:
+#         - containerPort: 3000
+# ---
+
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: rollout-analysis
+spec:
+  replicas: 4
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: argo-rollouts
+  template:
+    metadata:
+      labels:
+        app: webapp-rollouts
+    spec:
+      containers:
+      - name: rollouts-webapp
+        image: mohitv1/argocd-project:master_c82efa1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+  strategy:
+    canary:
+      steps:
+      - setWeight: 20
+      - pause: {}
+      - setWeight: 40
+      - pause: {duration: 10}
+      - setWeight: 60
+      - pause: {duration: 10}
+      - setWeight: 80
+      - pause: {duration: 10}
