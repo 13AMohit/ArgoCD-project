@@ -59,7 +59,7 @@ jobs:
         run: |
           git pull
           IMAGE_NAME="mohitv1/argocd-project:${{ steps.vars.outputs.branch }}_${{ steps.vars.outputs.sha_short }}"
-          sed -i "s|image:.*|image: $IMAGE_NAME|g" ./maifests/deployment.yaml
+          sed -i "s|image:.*|image: $IMAGE_NAME|g" ./manifests/deployment.yaml
 
       - name: Commit changes
         run: |
