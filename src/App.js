@@ -23,8 +23,8 @@ function App() {
   };
 
   const unitOptions = [
-    { value: 'metric', label: 'ARGOCD (°C)' },
-    { value: 'imperial', label: 'Fahrenheit (°F)' },
+    { value: 'metric', label: 'TESTING (°C)' },
+    { value: 'imperial', label: 'ARGO CICD (°F)' },
   ];
 
   // NOTE : Fatch data from OpenWeatherMap third party API.Constrected request url with (location, api key,unit).
