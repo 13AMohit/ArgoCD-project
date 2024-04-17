@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: webapp-image
-        image: nginx:1.14.2
+        image: mohitv1/argocd-project:master_306cad2
         ports:
         - containerPort: 3000
