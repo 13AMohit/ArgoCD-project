@@ -59,13 +59,13 @@ jobs:
         run: |
           git pull
           IMAGE_NAME="mohitv1/argocd-project:${{ steps.vars.outputs.branch }}_${{ steps.vars.outputs.sha_short }}"
-          sed -i "s|image:.*|image: $IMAGE_NAME|g" ./manifests/deployment.yaml
+          sed -i "s|image:.*|image: $IMAGE_NAME|g" ./manifests/argo-rollouts.yaml
 
       - name: Commit changes
         run: |
           git config --global user.email "${{ secrets.GIT_EMAIL }}"
           git config --global user.name "${{ secrets.GIT_USERNAME }}"
-          git add ./manifests/deployment.yaml
+          git add ./manifests/argo-rollouts.yaml
           git commit -m "Update container image in deployment.yaml"
           git push
 
