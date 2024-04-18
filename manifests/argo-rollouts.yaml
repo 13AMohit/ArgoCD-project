@@ -16,7 +16,7 @@
 #     spec:
 #       containers:
 #       - name: webapp-image
-#         image: mohitv1/argocd-project:master_1167a8c
+#         image: mohitv1/argocd-project:master_4834b68
 #         ports:
 #         - containerPort: 3000
 # ---
@@ -38,7 +38,7 @@ spec:
     spec:
       containers:
       - name: rollouts-webapp
-        image: mohitv1/argocd-project:master_1167a8c
+        image: mohitv1/argocd-project:master_4834b68
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
