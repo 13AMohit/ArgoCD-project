@@ -2,6 +2,9 @@
 
 This repository contains the setup and implementation of a GitOps pipeline using Argo CD for continuous deployment and Argo Rollouts for canary releases in a Kubernetes cluster.
 
+I also created a video for this assignment => [Video](https://www.youtube.com/watch?v=kw2anbSCK2s&ab_channel=Mohit%27sCloudRealm)
+
+
 ## Task 1: Setup and Configuration
 
 ### Create a GitHub Repository
