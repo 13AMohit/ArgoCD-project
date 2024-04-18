@@ -53,6 +53,7 @@ I also created a video for this assignment => [Video](https://www.youtube.com/wa
 
 ## Repository Structure
 
+- `.github/workflows/argocicd.yaml` : Github action workflow file
 - `manifests/`: Contains Kubernetes manifests for deploying the application.
 - `Dockerfile`: Dockerfile for building the application Docker image.
 - `README.md`: Documentation explaining the setup and implementation of the GitOps pipeline.
